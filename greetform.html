@@ -1,0 +1,100 @@
+<!HTML DOCTYPE>
+<html>
+<head>
+<title>{{page_title}}</title>
+</head>
+
+<style>
+body   {color: white;
+        font-family: "Axure Handwriting";
+        font-size:16pt;
+        background-color: #EE8182;
+        margin-top: 100px;}
+
+h1     {font-family: "orange juice";
+        font-size:46pt;}
+
+img    {margin: 60px;
+        margin-top: 20px;
+        margin-left: 170px;
+        padding: 30px;}
+
+.fb-login-button {margin-top: 50px;}
+.flex-container {display: flex;}
+</style>
+
+<body>
+<div class="flex-container">
+<div>
+<img src="https://static.wixstatic.com/media/311eea_0450e971619849328ed6871fb5270c42~mv2.png/v1/fill/w_245,h_397,al_c/311eea_0450e971619849328ed6871fb5270c42~mv2.png"
+     alt="A single man">
+</div>
+<div>
+<h1>Friend to Lover</h1>
+<p>Still single and want to start a new relationship?</p>
+<p>Find out who is the "right" person for you from your Facebook friend list!</p>
+
+<div class="fb-login-button" data-max-rows="1" data-size="large"
+data-button-type="login_with" data-show-faces="false"
+data-auto-logout-link="false" data-use-continue-as="true"></div>
+
+<div id="status">
+</div>
+</div>
+</div>
+<br>
+
+<script>
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    if (response.status === 'connected') {
+      testAPI();
+    } else {
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    }
+  }
+
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '540673919664751',
+    cookie     : true,
+
+    xfbml      : true,
+    version    : 'v2.11'
+  });
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+</script>
+
+
+</body>
+</html>
