@@ -1,0 +1,46 @@
+<!HTML DOCTYPE>
+<html>
+<head>
+<title>{{page_title}}</title>
+</head>
+
+<style>
+body   {color: white;
+        font-family: "Axure Handwriting";
+        font-size:16pt;
+        background-image: url("love.png");
+        background-color: #EE8182;
+        margin-top: 50px;
+        margin-left: 50px;
+}
+        
+h1     {font-family: "orange juice";
+        font-size:30pt;}
+</style>
+
+<body>
+    
+<div style="float: left; width: 50%;">
+<h1>Your Profile</h1>
+    <ul>
+        <li>{% for name of the user %}</li>
+	    <li>{% for photo of the user %}</li>
+	</ul>
+	<img src="{{photo.photo_url}}">
+</div>
+
+<div style="float: right; width: 50%;">
+	<h1>High Matches</h1>
+    <ul>
+        <li>TOP 1</li>
+        	{% for photo of the user %}
+        <li>TOP 2</li>
+        	{% for photo of the user %}
+        <li>TOP 3</li>
+        	{% for photo of the user %}
+
+<img src="{{photo.photo_url}}">
+</div>
+
+</body>
+</html>
